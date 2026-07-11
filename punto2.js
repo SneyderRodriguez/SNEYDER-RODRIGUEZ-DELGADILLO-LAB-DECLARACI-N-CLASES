@@ -1,4 +1,4 @@
-/*CINE COLOMBIA - BOLETAS NORMALES Y VIP*/
+/*🎞🎟🎫CINE COLOMBIA - BOLETAS NORMALES Y VIP*/
 class Pelicula {
     constructor(titulo, duracion) {
         this.titulo = titulo;
@@ -22,15 +22,23 @@ class PeliculaVIP extends Pelicula{
     }
 
     precioBoleta(){
-        return this.precioBase + 25000;
-        if(this.incluyecomida == si){
-            return this.precioBase + 18000;
+        let precio = this.precioBase + 25000;
+        if(this.incluyecomida == true){
+            precio += 18000;
         }
+        return precio;
     }
 }
 
-const peliculanormal = new Pelicula("Avatar", 180, this.precioBase);
-console.log(peliculanormal.ficha());
+let peliculanormal = new Pelicula("Avatar", 180);
+console.log(peliculanormal.ficha(), "\n=================================");
 
-const peliculaVIP = new Pelicula("RED", 120, this.precioBase, "si");
+let peliculaVIP = new PeliculaVIP("RED", 120, true);
+console.log(peliculaVIP.ficha());
 console.log(peliculaVIP.precioBoleta());
+
+/**La clase PeliculaVIP no define ficha().
+ * Aun así, al imprimir la ficha de una pelicula VIP el precio sale más alto.
+ * ¿Por qué, si ficha() es la misma que heredó de peicula?
+ * Porque le estamos diciendo a PeliculaVIP, que envie la información a Pelicula y se complemente
+ */
